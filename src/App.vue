@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
   <div v-if="showModal">
-    <Modal theme="sale" @close="toggleModal">
+    <Modal @close="toggleModal">
       <template v-slot:links>
         <a href="">Sign up now</a>
         <a href="">More Info</a>
@@ -11,7 +11,14 @@
       <p>Grab your ninja swag</p>
     </Modal>
   </div>
+  <div v-if="showModal2">
+    <Modal theme="sale" @close="toggleModal2">
+      <h2>Sign up to the news letter</h2>
+      <p>For updates and promo codes</p>
+    </Modal>
+  </div>
   <button @click="toggleModal">Open Modal</button>
+  <button @click="toggleModal2">Open Modal2</button>
 </template>
 
 <script>
@@ -26,11 +33,15 @@ export default {
       header: "Sign up for the give away",
       text: "Ninja swag for half price",
       showModal: false,
+      showModal2: false,
     };
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModal2() {
+      this.showModal2 = !this.showModal2;
     },
   },
 };
